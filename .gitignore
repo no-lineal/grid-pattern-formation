@@ -118,3 +118,6 @@ venv.bak/
 saved
 *.ipynb
 *.zip
+
+*.DS_Store
+*__pycache__*
