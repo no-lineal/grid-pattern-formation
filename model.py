@@ -41,7 +41,7 @@ class RNN(torch.nn.Module):
         
         # output layer (probability distribution)
         self.softmax = torch.nn.Softmax(dim=-1)
-        self.tanh = torch.nn.Tanh(dim=-1)
+        self.tanh = torch.nn.Tanh()
 
     def g(self, inputs):
         
