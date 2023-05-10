@@ -106,6 +106,7 @@ class RNN(torch.nn.Module):
         preds = self.predict(inputs)
         yhat = self.softmax( preds )
         
+        print( torch.max( inputs ), torch.min( inputs ) )
         print( torch.max( preds ), torch.min( preds ) )
         print( torch.max( yhat ), torch.min( yhat ) )
 
