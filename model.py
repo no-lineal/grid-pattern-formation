@@ -105,8 +105,12 @@ class RNN(torch.nn.Module):
 
         preds = self.predict(inputs)
         yhat = self.softmax( preds )
+        
+        print( torch.max( preds ), torch.min( preds ) )
+        print( torch.max( yhat ), torch.min( yhat ) )
 
-        loss = -( y * torch.log(yhat + eps) ).sum(-1).mean()
+        loss = -( y * torch.log(yhat) ).sum(-1).mean()
+        #loss = -( y * torch.log(yhat + eps) ).sum(-1).mean()
         #print(torch.isnan(loss).any())
 
         # Weight regularization 
