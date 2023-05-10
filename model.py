@@ -41,6 +41,7 @@ class RNN(torch.nn.Module):
         
         # output layer (probability distribution)
         self.softmax = torch.nn.Softmax(dim=-1)
+        self.tanh = torch.nn.Tanh(dim=-1)
 
     def g(self, inputs):
         
@@ -104,11 +105,8 @@ class RNN(torch.nn.Module):
         y = pc_outputs
 
         preds = self.predict(inputs)
-        yhat = self.softmax( preds )
-        
-        print( torch.max( inputs[1] ), torch.min( inputs[1] ) )
-        print( torch.max( preds ), torch.min( preds ) )
-        print( torch.max( yhat ), torch.min( yhat ) )
+        #yhat = self.softmax( preds )
+        yhat = self.tanh( preds )
 
         loss = -( y * torch.log(yhat) ).sum(-1).mean()
         #loss = -( y * torch.log(yhat + eps) ).sum(-1).mean()
